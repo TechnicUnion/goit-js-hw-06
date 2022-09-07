@@ -1,5 +1,4 @@
 const form = document.querySelector(".login-form");
-const btnEl = document.querySelector("button");
 
 form.addEventListener("submit", onFormSubmit);
 
