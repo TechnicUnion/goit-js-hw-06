@@ -9,8 +9,10 @@ decrementBtn.addEventListener("click", onDecrementBtnClick);
 incrementBtn.addEventListener("click", onIncrementBtnClick);
 
 function onDecrementBtnClick() {
-  counterValue -= 1;
-  return (counterValueEL.textContent = counterValue);
+  if (counterValueEL.textContent > 0) {
+    counterValue -= 1;
+    return (counterValueEL.textContent = counterValue);
+  }
 }
 
 function onIncrementBtnClick() {
