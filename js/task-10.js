@@ -9,20 +9,28 @@ const btnCreateEl = document.querySelector("[data-create]");
 const btnDestroyEl = document.querySelector("[data-destroy]");
 const boxesEl = document.querySelector("#boxes");
 
-// btnCreateEl.addEventListener("click", onButtonCreate);
-// btnDestroyEl.addEventListener("click", onButtonDestroy);
-
-// function onButtonCreate {
-// }
+btnCreateEl.addEventListener("click", () => {
+  return createBoxes(inputEl.value);
+});
+btnDestroyEl.addEventListener("click", destroyBoxes);
 
 function createBoxes(amount) {
-  let box = [];
+  let newBoxes = [];
   let boxSize = 30;
   for (let i = 1; i <= amount; i += 1) {
-    let div = `<div style="background-color: ${getRandomHexColor()};
-width: ${boxSize}px; height: ${boxSize}px"></div>`;
-    box.push(div);
+    const box = document.createElement("div");
+    box.style.backgroundColor = `${getRandomHexColor()}`;
+    box.style.width = `${boxSize}px`;
+    box.style.height = `${boxSize}px`;
+    newBoxes.push(box);
     boxSize += 10;
+    //     let box = `<div style="background-color: ${getRandomHexColor()};
+    // width: ${boxSize}px; height: ${boxSize}px"></div>`;
   }
-  return boxesEl.insertAdjacentHTML("beforeend", box.join(""));
+  return boxesEl.append(...newBoxes);
+  // return boxesEl.insertAdjacentHTML("beforeend", box.join(""));
+}
+
+function destroyBoxes() {
+  boxesEl.innerHTML = "";
 }
